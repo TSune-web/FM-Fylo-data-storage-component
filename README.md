@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Fylo data storage component](https://your-live-site-url.com)
+- Live Site URL: [Fylo data storage component with interactive slider](https://tsune-web.github.io/FM-Fylo-data-storage-component/)
 
 ## My process
 
