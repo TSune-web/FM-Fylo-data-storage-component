@@ -1,0 +1,346 @@
+:root {
+  /* Primary colors */
+  --gradient: hsl(6, 100%, 80%), hsl(335, 100%, 65%);
+
+  /* Neutral colors */
+  --pale-blue: hsl(243, 100%, 93%);
+  --grayish-blue: hsl(229, 7%, 55%);
+  --dark-blue: hsl(228, 56%, 26%);
+  --very-dark-blue: hsl(229, 57%, 11%);
+
+  /* Font */
+  --f-lg: 700;
+  --f-sm: 400;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+/****************
+  Styling below - mobile first
+****************/
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.4rem;
+  color: var(--pale-blue);
+  background-color: var(--very-dark-blue);
+}
+
+picture {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+picture source + img {
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 6rem;
+}
+
+.icon-wrapper {
+  width: 86%;
+  padding: 0 4rem;
+  background-color: var(--dark-blue);
+  border-radius: 1rem 10rem 1rem 1rem;
+}
+
+.logo {
+  margin-top: 4rem;
+}
+
+.icons {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.icons li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0 4rem;
+  padding: 1.2rem;
+  background-color: var(--very-dark-blue);
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+.icons li:hover,
+.icons li:focus {
+  background-color: var(--pale-blue);
+  animation: scale 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.4);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.storage-wrapper {
+  position: relative;
+  width: 86%;
+  margin-top: 1.95rem;
+  margin-bottom: 3.5rem;
+  padding-top: 3rem;
+  background-color: var(--dark-blue);
+  border-radius: 1rem;
+}
+
+.storage-wrapper span {
+  font-weight: var(--f-lg);
+}
+
+p.storage__message {
+  margin-left: 0.4rem;
+  text-align: center;
+  font-size: 1.4235rem;
+}
+
+.slider-container {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0 3rem;
+}
+
+.storage__label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5.5rem;
+  padding: 0 3rem;
+  font-size: 1.2rem;
+}
+
+.storage__popup {
+  position: absolute;
+  top: 12.175rem;
+  right: 50%;
+  transform: translateX(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18rem;
+  background-color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.storage__popup:hover {
+  transform: scale(1.1) translateX(45%);
+  transition: transform 0.5s ease-out;
+}
+
+.storage__popup > p {
+  font-weight: var(--f-lg);
+  color: #000;
+  text-transform: uppercase;
+  margin: 1.25rem;
+}
+
+.storage__popup p span:first-child {
+  font-size: 4rem;
+}
+
+.storage__popup p span:nth-child(2) {
+  display: inline-block;
+  line-height: 1.4;
+  transform: translateY(-0.8rem);
+}
+
+/****************
+* The slider handle 
+* -webkit- (Chrome, Opera, Safari, Edge) and
+* -moz- (Firefox) to override default look
+****************/
+label {
+  display: none;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; /* Override default styles */
+  -moz-appearance: none;
+  appearance: none;
+  /* Change the size of background */
+  width: 100%;
+  height: 2rem;
+  margin: 1rem 0;
+  padding: 0;
+  background-color: var(--very-dark-blue);
+  font-size: 3rem;
+  border-radius: 5rem;
+  overflow: visible;
+  outline: none;
+  opacity: 0.7;
+  --rangeValue: calc(attr(value) * 100); /* custom property set via JS */
+}
+
+input[type="range"]:hover {
+  opacity: 1;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 1.25rem; /* adjust height of inner range */
+    margin-left: 0.35rem;
+    /* Below is left side of slider bar */
+    background: -webkit-linear-gradient(
+      left,
+      var(--gradient) calc(var(--rangeValue) * 0.9%),
+      transparent calc(var(--rangeValue) * 1.015%)
+    );
+    border-radius: 5rem;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    transform: translateY(-0.1rem);
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  input[type="range"]:hover::-webkit-slider-thumb {
+    box-shadow: 0 0 0 10px rgba(255, 238, 238, 0.25);
+  }
+}
+
+/* for Firefox with -moz- vendor prefix */
+input[type="range"]::-moz-range-progress {
+  height: 1.25rem;
+  border-radius: 5rem;
+}
+input[type="range"]::-moz-range-track {
+  height: 1.25rem;
+  margin-left: 1rem;
+  background: -moz-linear-gradient(
+    left,
+    var(--gradient) calc(var(--rangeValue) * 0.9%),
+    transparent calc(var(--rangeValue) * 1.015%)
+  );
+  border-radius: 5rem;
+}
+/* Firefox - slider thumb */
+input[type="range"]::-moz-range-thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: translateX(-0.075rem);
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25);
+}
+/****************
+* The slider handle until here 
+****************/
+@media screen and (min-width: 1000px) {
+  body {
+    margin: 0 auto;
+  }
+
+  picture {
+    position: absolute;
+    bottom: 0;
+  }
+
+  main {
+    display: flex;
+    flex-direction: row;
+    margin: 0 17%;
+    padding-top: 0;
+  }
+
+  .icon-wrapper {
+    width: 55.75%;
+    margin: 0 3.75rem 3.75rem 1.5rem;
+  }
+
+  .storage-wrapper {
+    width: 95%;
+    height: 15rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  p.storage__message {
+    text-align: unset;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    padding-top: 1.25rem;
+    padding-left: 4rem;
+  }
+
+  .slider-container {
+    width: 100%;
+    padding-left: 4rem;
+    padding-right: 3rem;
+  }
+
+  .storage__label {
+    margin-left: 1rem;
+  }
+
+  .storage__popup {
+    top: -4.5rem;
+    right: 28%;
+    border-bottom-right-radius: 0;
+  }
+
+  .storage__popup::after {
+    content: "";
+    position: absolute;
+    top: 6.5rem;
+    right: 0;
+    width: 0;
+    height: 0;
+    background-color: white;
+    border: 1.3rem solid #fff;
+    border-left-color: var(--dark-blue);
+    border-bottom-color: var(--dark-blue);
+  }
+
+  .storage__popup > p {
+    margin: 1rem auto;
+  }
+
+  .storage__popup p span:nth-child(2) {
+    transform: translateY(-0.75rem);
+  }
+}

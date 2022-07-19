@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Frontend Mentor | Fylo data storage component</title>
+  </head>
+  <body>
+    <picture>
+      <source srcset="./images/bg-desktop.png" media="(min-width: 1000px)" />
+      <img src="./images/bg-mobile.png" alt="dark flow background" />
+    </picture>
+
+    <main>
+      <section class="icon-wrapper">
+        <img src="./images/logo.svg" alt="Fylo" class="logo" />
+        <ul class="icons">
+          <li>
+            <img src="./images/icon-document.svg" alt="" />
+          </li>
+          <li>
+            <img src="./images/icon-folder.svg" alt="" />
+          </li>
+          <li>
+            <img src="./images/icon-upload.svg" alt="" />
+          </li>
+        </ul>
+      </section>
+
+      <section class="storage-wrapper">
+        <p class="storage__message">
+          You’ve used
+          <span id="usage"> 815 GB </span>
+          of your storage
+        </p>
+        <div class="slider-container">
+          <label for="slider"></label>
+          <input
+            type="range"
+            min="0"
+            max="1000"
+            step="1"
+            value="815"
+            id="slider"
+          />
+        </div>
+        <div class="storage__label">
+          <span>0 GB</span>
+          <span>1000 GB</span>
+        </div>
+        <div class="storage__popup">
+          <p>
+            <span id="storageRemaining">185 </span>
+            <span>GB Left</span>
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="slider.js"></script>
+  </body>
+</html>
